@@ -1,0 +1,109 @@
+# Entry 1: dc=confluent,dc=test
+#dn: dc=confluent,dc=test
+#dc: confluent
+#o: Confluent, Inc
+#objectclass: top
+#objectclass: dcObject
+#objectclass: organization
+
+# Entry 6: ou=Users,dc=confluent,dc=test
+dn: ou=Users,dc=confluent,dc=test
+changeType: add
+objectclass: organizationalUnit
+objectclass: top
+ou: Users
+
+# Entry 7: cn=app01,ou=Users,dc=confluent,dc=test
+dn: uid=app01,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Kafka streams app 001
+sn: app01
+description: Amazing Streaming Application #1
+objectclass: inetOrgPerson
+userpassword: {MD5}X03MO1qnZdYdgyfeuILPmQ==
+
+# Entry 8: cn=app02,ou=Users,dc=confluent,dc=test
+dn: uid=app02,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Kafka event ingestion service
+sn: app02
+uid: app02
+description: Kafka Consumer ingegation service #2
+objectclass: inetOrgPerson
+userpassword: {MD5}X03MO1qnZdYdgyfeuILPmQ==
+
+# Entry 9d: uid=ivan,ou=Users,dc=confluent,dc=test
+dn: uid=ivan,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Ivan Tang
+sn: tang
+objectclass: inetOrgPerson
+userpassword: password
+
+dn: uid=kafka_broker,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Ivan Tang
+sn: tang
+objectclass: inetOrgPerson
+userpassword: password
+
+# Entry 9b: cn=bob,ou=Users,dc=confluent,dc=test
+dn: uid=bob,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Bob Smith
+sn: smith
+objectclass: inetOrgPerson
+userpassword: {MD5}X03MO1qnZdYdgyfeuILPmQ==
+
+# Entry 9c: cn=c3,ou=Users,dc=confluent,dc=test
+dn: uid=c3,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Confluent Control Center
+sn: c3
+objectclass: inetOrgPerson
+userpassword: c3password
+
+# Entry 10: cn=mds,ou=Users,dc=confluent,dc=test
+dn: uid=mds,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Confluent Metadata Service (MDS) for RBAC
+sn: mds
+objectclass: inetOrgPerson
+userpassword: mds
+
+# Entry 10a: uid=mds_user,ou=Users,dc=confluent,dc=test
+dn: uid=mds_user,ou=Users,dc=confluent,dc=test
+changeType: add
+cn: Confluent Metadata Service (MDS) for RBAC
+sn: mds
+objectclass: inetOrgPerson
+userpassword: mds
+
+# Entry 3: ou=Groups,dc=confluent,dc=test
+dn: ou=Groups,dc=confluent,dc=test
+changeType: add
+objectclass: organizationalUnit
+objectclass: top
+ou: Groups
+
+# Entry 4: cn=admins,ou=Groups,dc=confluent,dc=test
+dn: cn=admins,ou=Groups,dc=confluent,dc=test
+changeType: add
+cn: admins
+description: Cluster Administrators
+uniqueMember: uid=mds,ou=Users,dc=confluent,dc=test
+uniqueMember: uid=mds_user,ou=Users,dc=confluent,dc=test
+uniqueMember: uid=ivan,ou=Users,dc=confluent,dc=test
+uniqueMember: uid=kafka_broker,ou=Users,dc=confluent,dc=test
+objectclass: groupOfUniqueNames
+
+# Entry 5: cn=devs,ou=Groups,dc=confluent,dc=test
+dn: cn=devs,ou=Groups,dc=confluent,dc=test
+changeType: add
+cn: devs
+description: Developers
+uniqueMember: uid=app01,ou=Users,dc=confluent,dc=test
+uniqueMember: uid=app02,ou=Users,dc=confluent,dc=test
+uniqueMember: uid=bob,ou=Users,dc=confluent,dc=test
+objectclass: groupOfUniqueNames
+
